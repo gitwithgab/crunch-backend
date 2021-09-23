@@ -2,23 +2,23 @@ const express = require('express')
 const router = express.Router()
 
 
-const tvShowsService = require("../services/TvShowsService")
+const tvShowService = require("../services/TvShowsService")
 
 
 //view list of items
-router.get('/', tvShowsService.getAllTvShows)
+router.get('/', tvShowService.getAllTvShows)
 
 //view single item
-router.get("/:tvshow_name", tvShowsService.getATvShow)
+router.get('/:tvshow_title', tvShowService.getATvShow)
 
 //add a new item
-router.post('/', tvShowsService.createATvShow)
+router.post('/', tvShowService.createATvShow)
 
 //updates an item
-router.put('/:id', tvShowsService.updateATvShow)
+router.put('/:id', tvShowService.updateATvShow)
 
 //deletes an item
-router.delete('/:tvshow_name', tvShowsService.deleteATvShow)
+router.delete('/:tvshow_title', tvShowService.deleteATvShow)
 
 
 module.exports = router

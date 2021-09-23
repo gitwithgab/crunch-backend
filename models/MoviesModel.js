@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const moviesSchema = new Schema({
+const movieSchema = new Schema({
 
 
     movie_title:    
@@ -49,6 +49,6 @@ const moviesSchema = new Schema({
 });
 
 
-const moviesModel = mongoose.model('movies', moviesSchema);
+const movieModel = mongoose.model('movie', movieSchema);
 
-module.exports = moviesModel; 
+module.exports = movieModel; 

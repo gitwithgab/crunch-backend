@@ -1,9 +1,9 @@
-const moviesModel = require("../models/MoviesModel");
+const movieModel = require("../models/MoviesModel");
 
 
 exports.getAllMovies = (req,res)=>{
 
-    moviesModel.find()
+    movieModel.find()
     .then(movie=>{
         res.status(200).json({
             message : `List of all movies`,
@@ -20,7 +20,7 @@ exports.getAllMovies = (req,res)=>{
 
 exports.getAMovie = (req,res)=>{
    
-    moviesModel.findOne({movie_title:req.params.movie_title})
+    movieModel.findOne({movie_title:req.params.movie_title})
     .then(movie=>{
        
         if(movie)
@@ -51,7 +51,7 @@ exports.createAMovie = (req,res)=>{
 
     const newMovie = req.body;
 
-    const movie = new moviesModel(newMovie);
+    const movie = new movieModel(newMovie);
 
     movie.save()
     .then(movie=>{
@@ -70,7 +70,7 @@ exports.createAMovie = (req,res)=>{
 exports.updateAMovie = (req,res) =>{
 
     const updatedMovie =req.body;
-    moviesModel.findByIdAndUpdate(req.params.id, updatedMovie, {new:true})
+    movieModel.findByIdAndUpdate(req.params.id, updatedMovie, {new:true})
     .then(movie=>{
         if(movie)
         {
@@ -97,7 +97,7 @@ exports.updateAMovie = (req,res) =>{
 
 exports.deleteAMovie = (req,res)=>{
     
-    moviesModel.findOneAndRemove({movie_title:req.params.movie_title})
+    movieModel.findOneAndRemove({movie_title:req.params.movie_title})
     .then(movie=>{
         if(movie)
         {

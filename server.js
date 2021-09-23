@@ -5,21 +5,21 @@ const mongoose = require('mongoose');
 require('dotenv').config({path:"config/Keys.env"});
 
 
-const moviesController  = require("./controllers/MoviesController");
-/*const tvShowsController  = require("./controllers/TvShowsController");
-const usersController  = require("./controllers/UsersController");*/
-
+const movieController  = require("./controllers/MoviesController");
+const tvShowController  = require("./controllers/TvShowsController");
+/*const userController  = require("./controllers/UsersController");
+*/
 
 const app = express();
 
 
 app.use(express.json());
 
-app.use("/movies",moviesController);
-/*
-app.use("/tvshows",tvShowsController);
+app.use("/movie",movieController);
 
-app.use("/users",usersController);*/
+app.use("/tvshow",tvShowController);
+
+/*app.use("/user",userController);*/
 
 
 const PORT = process.env.PORT;

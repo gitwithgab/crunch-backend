@@ -2,23 +2,23 @@ const express = require('express')
 const router = express.Router()
 
 
-const moviesService = require("../services/MoviesService")
+const movieService = require("../services/MoviesService")
 
 
 //view list of items
-router.get('/', moviesService.getAllMovies)
+router.get('/', movieService.getAllMovies)
 
 //view single item
-router.get("/:movie_title", moviesService.getAMovie)
+router.get('/:movie_title', movieService.getAMovie)
 
 //add a new item
-router.post('/', moviesService.createAMovie)
+router.post('/', movieService.createAMovie)
 
 //updates an item
-router.put('/:id', moviesService.updateAMovie)
+router.put('/:id', movieService.updateAMovie)
 
 //deletes an item
-router.delete('/:movie_title', moviesService.deleteAMovie)
+router.delete('/:movie_title', movieService.deleteAMovie)
 
 
 module.exports = router
