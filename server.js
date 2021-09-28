@@ -2,7 +2,10 @@ const express = require("express");
 const mongoose = require('mongoose');
 
 
-require('dotenv').config({path:"config/Keys.env"});
+if(process.env.NODE_ENV!="production")
+{
+    require('dotenv').config({path:"config/Keys.env"});
+}
 
 
 const movieController  = require("./controllers/MoviesController");
@@ -12,6 +15,11 @@ const tvShowController  = require("./controllers/TvShowsController");
 
 const app = express();
 
+/*
+app.use(cors({
+    origin :"" - front end link
+}))
+*/
 
 app.use(express.json());
 

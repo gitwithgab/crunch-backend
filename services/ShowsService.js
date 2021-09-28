@@ -1,13 +1,14 @@
-const movieModel = require("../models/MoviesModel");
+const showsModel = require("../models/ShowsModel");
 
 
-exports.getAllMovies = (req,res)=>{
+exports.getAllShows = (req,res)=>{
 
-    movieModel.find()
-    .then(movie=>{
+    showsModel.find()
+    .then(show=>{
         res.status(200).json({
-            message : `List of all movies`,
-            data : movie
+            message : `List of all shows`,
+            data : show,
+            total : show.length
         })
     })
     .catch(err=>{
@@ -18,23 +19,23 @@ exports.getAllMovies = (req,res)=>{
 };
 
 
-exports.getAMovie = (req,res)=>{
+exports.getAShow = (req,res)=>{
    
-    movieModel.findOne({movie_title:req.params.movie_title})
-    .then(movie=>{
+    showsModel.findOne({title:req.params.title})
+    .then(show=>{
        
-        if(movie)
+        if(show)
         {
             res.status(200).json({
-                message : `${req.params.movie_title} found`,
-                data : movie
+                message : `${req.params.title} found`,
+                data : show
             })
         }
 
         else
         {
             res.status(404).json({
-                message : `${req.params.movie_title} not found`
+                message : `${req.params.title} not found`
             })
         }
 
@@ -47,17 +48,17 @@ exports.getAMovie = (req,res)=>{
 };
 
 
-exports.createAMovie = (req,res)=>{
+exports.createAShow = (req,res)=>{
 
-    const newMovie = req.body;
+    const newShow = req.body;
 
-    const movie = new movieModel(newMovie);
+    const show = new showsModel(newShow);
 
-    movie.save()
-    .then(movie=>{
+    show.save()
+    .then(show=>{
         res.status(200).json({
-            message : `The movie was created successfully`,
-            data : movie
+            message : `The show was created successfully`,
+            data : show
         })
     })
     .catch(err=>{
@@ -67,16 +68,16 @@ exports.createAMovie = (req,res)=>{
     })
 };
 
-exports.updateAMovie = (req,res) =>{
+exports.updateAShow = (req,res) =>{
 
-    const updatedMovie =req.body;
-    movieModel.findByIdAndUpdate(req.params.id, updatedMovie, {new:true})
-    .then(movie=>{
-        if(movie)
+    const updatedShow =req.body;
+    showsModel.findByIdAndUpdate(req.params.id, updatedShow, {new:true})
+    .then(show=>{
+        if(show)
         {
             res.status(200).json({
                 message : `${req.params.id} was successfully updated`,
-                data : movie
+                data : show
                 })
         }
 
@@ -95,21 +96,21 @@ exports.updateAMovie = (req,res) =>{
 };
 
 
-exports.deleteAMovie = (req,res)=>{
+exports.deleteAShow = (req,res)=>{
     
-    movieModel.findOneAndRemove({movie_title:req.params.movie_title})
-    .then(movie=>{
-        if(movie)
+    showsModel.findOneAndRemove({title:req.params.title})
+    .then(show=>{
+        if(show)
         {
             res.status(200).json({
-                message : `${req.params.movie_title} was successfully deleted`
+                message : `${req.params.title} was successfully deleted`
                 })
         }
 
         else
         {
             res.status(404).json({
-                message : `${req.params.movie_title} not found`
+                message : `${req.params.title} not found`
             })
         }
 

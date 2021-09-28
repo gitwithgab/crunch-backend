@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const tvShowSchema = new Schema({
+const showsSchema = new Schema({
 
 
     title:    
@@ -9,17 +9,12 @@ const tvShowSchema = new Schema({
         type:String,
         required:true
     },
+    category:
+    {
+        type:String,
+        required:true
+    },
     synopsis:
-    {
-        type:String,
-        required:true
-    },
-    trailer:    
-    {
-        type:String,
-        required:true
-    },
-    rating:    
     {
         type:String,
         required:true
@@ -53,12 +48,17 @@ const tvShowSchema = new Schema({
     {
         type:Boolean,
         default:false
+    },
+    dateCreated:
+    {
+        type:Date,
+        default:Date.now()
     }
 
     
 });
 
 
-const tvShowModel = mongoose.model('tvshow', tvShowSchema);
+const showsModel = mongoose.model('show', showsSchema);
 
-module.exports = tvShowModel; 
+module.exports = showsModel; 
