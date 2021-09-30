@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require('mongoose');
+const fileUpload = require('express-fileupload');
+const cors = require('cors');
 
 
 if(process.env.NODE_ENV!="production")
@@ -10,14 +12,20 @@ if(process.env.NODE_ENV!="production")
 
 const movieController  = require("./controllers/MoviesController");
 const tvShowController  = require("./controllers/TvShowsController");
-/*const userController  = require("./controllers/UsersController");
-*/
+/*const userController  = require("./controllers/UsersController");*/
 
+
+//middleware that will allow API to parse incoming JSON data
 const app = express();
 
+//middleware that will allow API to parse multipart/form-data (Data that contains both text and files)
+app.use(fileUpload());
 /*
+
+app.use(express.static('assets/img/uploads'))
+
 app.use(cors({
-    origin :"" - front end link
+    origin : process.env.FRONT_END_ADDRESS
 }))
 */
 

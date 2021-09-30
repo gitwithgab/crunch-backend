@@ -12,7 +12,7 @@ router.get('/', showsService.getAllShows)
 router.get('/:title', showsService.getAShow)
 
 //add a new item
-router.post('/', showsService.createAShow)
+router.post('/', showsService.addAShow)
 
 //updates an item
 router.put('/:id', showsService.updateAShow)

@@ -3,13 +3,12 @@ const { Schema } = mongoose;
 
 const showsSchema = new Schema({
 
-
-    title:    
+    category:
     {
         type:String,
         required:true
     },
-    category:
+    title:    
     {
         type:String,
         required:true
@@ -27,12 +26,6 @@ const showsSchema = new Schema({
     userScore:
     {
         type:Number,
-        required:true
-    },
-    bannerImg:    
-    {
-        type:String,
-        required:true
     },
     rentalPrice:
     {
@@ -44,10 +37,15 @@ const showsSchema = new Schema({
         type:Number,
         required:true
     },
-    featured:
+    isFeatured:
     {
         type:Boolean,
         default:false
+    },
+    bannerImg:    
+    {
+        type:String,
+        required:true
     },
     dateCreated:
     {
