@@ -1,15 +1,15 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
 
 const showsService = require("../services/showsService")
 
 
 //view list of items
-router.get('/', showsService.getAllShows)
+router.get('/', showsService.getMovies)
 
 //view single item
-router.get('/:title', showsService.getAShow)
+router.get('/:id', showsService.getAShow)
 
 //add a new item
 router.post('/', showsService.addAShow)

@@ -29,6 +29,10 @@ const userSchema = new Schema({
         type:String,
         required:true
     },
+    profileImg:
+    {
+        type:String,
+    },
     dateCreated:
     {
         type:Date,

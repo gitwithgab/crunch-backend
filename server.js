@@ -12,7 +12,7 @@ if(process.env.NODE_ENV!="production")
 
 const movieController  = require("./controllers/MoviesController");
 const tvShowController  = require("./controllers/TvShowsController");
-/*const userController  = require("./controllers/UsersController");*/
+const userController  = require("./controllers/UsersController");
 
 
 //middleware that will allow API to parse incoming JSON data
@@ -23,19 +23,19 @@ app.use(fileUpload());
 /*
 
 app.use(express.static('assets/img/uploads'))
+*/
 
 app.use(cors({
     origin : process.env.FRONT_END_ADDRESS
 }))
-*/
 
 app.use(express.json());
 
-app.use("/movie",movieController);
+app.use("/movies",movieController);
 
-app.use("/tvshow",tvShowController);
+app.use("/tvshows",tvShowController);
 
-/*app.use("/user",userController);*/
+app.use("/users",userController);
 
 
 const PORT = process.env.PORT;
