@@ -76,7 +76,7 @@ exports.createAUser = (req,res)=> {
         message : `Sorry, you can only upload jpeg, gif and png image formats. Please try again.`,
     })
     }
-
+    ``
 
 };
 
@@ -151,7 +151,7 @@ exports.updateAUser=(req,res)=>{
 
 
 exports.deleteAUser =(req,res)=>{
-    userModel.findByIdAndDelete({_id:req.params.id})
+    userModel.findByIdAndDelete(req.params.id)
     .then((user)=>{
         res.json({
             message:`${req.params.id} was deleted`,
@@ -161,7 +161,7 @@ exports.deleteAUser =(req,res)=>{
     })
     .catch(err=>{
         res.status(404).json({
-            message:`Movie ${req.params.id} could not be deleted`,
+            message:`User ${req.params.id} could not be deleted`,
             error:err
            }) 
     })

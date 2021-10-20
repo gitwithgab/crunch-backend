@@ -18,7 +18,7 @@ router.post('/', showsService.addAShow)
 router.put('/:id', showsService.updateAShow)
 
 //deletes an item
-router.delete('/:title', showsService.deleteAShow)
+router.delete('/:id', showsService.deleteAShow)
 
 
 module.exports = router

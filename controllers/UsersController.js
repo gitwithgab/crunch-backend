@@ -18,7 +18,7 @@ router.get('/:id', usersService.getAUser)
 router.put('/:id', usersService.updateAUser)
 
 //deletes an item
-router.delete('/:title', usersService.deleteAUser)
+router.delete('/:id', usersService.deleteAUser)
 
 
 module.exports = router

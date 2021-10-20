@@ -345,30 +345,19 @@ exports.updateAShow = (req,res) =>{
 };
 
 
-exports.deleteAShow = (req,res)=>{
-    
-    showsModel.findByIdAndRemove(req.params.id)
-    .then(show=>{
-        if(show)
-        {
-            res.status(200).json({
-                message : `Movie Item with ID :${req.params.id} was successfully deleted`
-                })
-        }
-
-        else
-        {
-            res.status(404).json({
-                message : `${req.params.title} not found`
-            })
-        }
-
-    })
-
-    .catch(err=>{
-        res.status(500).json({
-            message : `Error ${err}`
+exports.deleteAShow =(req,res)=>{
+    showsModel.findByIdAndDelete(req.params.id)
+    .then((show)=>{
+        res.json({
+            message:`${req.params.id} was deleted`,
+            data:show,
+            length:show.length
         })
     })
-
-};
+    .catch(err=>{
+        res.status(404).json({
+            message:`Movie ${req.params.id} could not be deleted`,
+            error:err
+           }) 
+    })
+}
