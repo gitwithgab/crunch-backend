@@ -6,6 +6,10 @@ const showsService = require("../services/ShowsService")
 
 
 //view list of items
+
+//add a new item
+router.post('/', showsService.addAShow)
+
 router.get('/', showsService.getTVShows)
 
 

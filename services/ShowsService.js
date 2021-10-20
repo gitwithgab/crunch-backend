@@ -21,7 +21,7 @@ exports.getTVShows = (req,res)=>{
     if(req.query.genre && req.query.featured)
     {
         showsModel.find()
-        .where("category").equals("tvshows")
+        .where("category").equals("tvshow")
         .and([{genre : req.query.genre},{isFeatured: req.query.featured}])
 
         .then(shows=>{
@@ -44,7 +44,7 @@ exports.getTVShows = (req,res)=>{
         const value = req.query.featured;
 
         showsModel.find()
-        .where("category").equals("tvshows")
+        .where("category").equals("tvshow")
         .and([{isFeatured : value}])
         .then(shows=>{
             res.json({
@@ -65,7 +65,7 @@ exports.getTVShows = (req,res)=>{
         const value = req.query.genre;
 
         showsModel.find()
-        .where("category").equals("tvshows")
+        .where("category").equals("tvshow")
         .and([{genre : value}])
         .then(shows=>{
             res.json({
@@ -83,7 +83,7 @@ exports.getTVShows = (req,res)=>{
 
     else {
         showsModel.find()
-        .where("category").equals("tvshows")
+        .where("category").equals("tvshow")
         .then(shows=>{
 
             res.status(200).json({
